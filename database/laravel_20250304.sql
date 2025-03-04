@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-04 07:57:48
+-- 產生時間： 2025-03-04 09:23:03
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -91,7 +91,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('wtIsHLjHLD5TgSagxeadaz6StDD8PZfbtFseMvUb', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT2NrSmRIeFp3UlZ0cGdBeWpRRmhZN1hoWmM4OXpNVzZIbjRMWHZNRiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3Qvc3R1ZGVudHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741071180);
+('wtIsHLjHLD5TgSagxeadaz6StDD8PZfbtFseMvUb', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT2NrSmRIeFp3UlZ0cGdBeWpRRmhZN1hoWmM4OXpNVzZIbjRMWHZNRiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3Qvc3R1ZGVudHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741076540);
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,10 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALUES
 (1, 'amy', '0911', NULL, NULL),
 (2, 'bob', '0922', NULL, NULL),
-(3, 'cat', '0933', NULL, NULL);
+(3, 'cat', '0933', NULL, NULL),
+(4, 'dog', '0952', NULL, NULL),
+(5, 'test', '0922', '2025-03-04 00:13:46', '2025-03-04 00:13:46'),
+(6, 'kitty', '0933', '2025-03-04 00:22:20', '2025-03-04 00:22:20');
 
 --
 -- 已傾印資料表的索引
@@ -178,7 +181,7 @@ ALTER TABLE `migrations`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
