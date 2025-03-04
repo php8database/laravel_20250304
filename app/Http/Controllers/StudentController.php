@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
         // dd('hello student index');
-        $data = [
+        /* $data = [
             [
             'id' => 1,
             'name' => 'amy',
@@ -29,8 +29,9 @@ class StudentController extends Controller
             'name' => 'cat',
             'mobile' => '0933'
         ]
-        ];
-        //dd($data);
+        ]; */
+        $data = DB::table('students')->get();
+        dd($data);
         return view('student.index',['data' => $data]);
     }
 
