@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apple;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class StudentController extends Controller
+class AppleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $users = DB::table('users')->get();
-        $data = DB::table('students')->get();
-        // dd($data[0]->name);
-       
-        return view('student.index', ['data' => $data]);
+        //
     }
 
     /**
@@ -38,7 +34,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Apple $apple)
     {
         //
     }
@@ -46,7 +42,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Apple $apple)
     {
         //
     }
@@ -54,7 +50,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Apple $apple)
     {
         //
     }
@@ -62,18 +58,8 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Apple $apple)
     {
         //
-    }
-
-    public function excel()
-    {
-        dd('hello student controller excel');
-    }
-
-    public function sayHello()
-    {
-        dd('hello kai');
     }
 }

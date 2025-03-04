@@ -8,14 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * 客戶要求
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('mobile');
-            $table->timestamps();
+        Schema::table('cars', function (Blueprint $table) {
+            $table->integer('love')->after('mobile');
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::table('cars', function (Blueprint $table) {
+            $table->dropColumn('love');
+        });
     }
 };
