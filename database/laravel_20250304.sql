@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-11 08:21:45
+-- 產生時間： 2025-03-11 09:00:54
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -69,7 +69,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2025_02_26_032805_add_love_column_cars_table', 1),
 (3, '2025_02_26_053359_create_students_table', 1),
 (4, '2025_02_26_061800_create_sessions_table', 1),
-(5, '2025_02_26_071533_create_apples_table', 1);
+(5, '2025_02_26_071533_create_apples_table', 1),
+(6, '2025_03_11_073527_create_teachers_table', 2);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5hKs3Wx0VnqiLh8T8ksFV7zgLwT8XUHiOXvrINDW', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTE3YzlpbmRqUUx5N01ndzB6TDRkRHh1Q3RGSDU0OE9ncDNKQU1oQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Qvc3R1ZGVudHM/c2VhcmNoPSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741677657);
+('5hKs3Wx0VnqiLh8T8ksFV7zgLwT8XUHiOXvrINDW', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTE3YzlpbmRqUUx5N01ndzB6TDRkRHh1Q3RGSDU0OE9ncDNKQU1oQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVhY2hlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741679886);
 
 -- --------------------------------------------------------
 
@@ -121,6 +122,28 @@ INSERT INTO `students` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALU
 (7, 'amy', '0911', '2025-03-10 19:43:37', '2025-03-10 19:43:37'),
 (8, 'amy', '0922', '2025-03-10 19:45:27', '2025-03-10 19:45:27'),
 (9, 'bob', '0923', '2025-03-10 19:45:56', '2025-03-10 23:08:49');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALUES
+(1, 'kai', '0922', '2025-03-10 23:57:51', '2025-03-10 23:57:51'),
+(2, 'kitty', '0921', '2025-03-10 23:58:06', '2025-03-10 23:58:06');
 
 --
 -- 已傾印資料表的索引
@@ -159,6 +182,12 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -178,13 +207,19 @@ ALTER TABLE `cars`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `students`
 --
 ALTER TABLE `students`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
