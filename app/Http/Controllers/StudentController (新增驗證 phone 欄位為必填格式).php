@@ -21,21 +21,8 @@ class StudentController extends Controller
 
         // $phone = User::find(1)->phone;
         $data = Student::with('phoneRelation')->with('hobbiesRelation')->get();
-        $tmpArr = [];
         // dd($data[0]->phoneRelation);
         // dd($data[0]->hobbiesRelation[0]->name);
-        // dd($data[0]);
-
-        // $data foreach
-        foreach ($data as $key1 => $value1) {
-            foreach ($value1->hobbiesRelation as $key2 => $value2) {
-                array_push($tmpArr,$value2->name);
-            }
-        }
-
-        dd($tmpArr);
-
-        // $myArr = ['s14-01','s14-02'];
 
         return view('student.index', ['data' => $data]);
     }
@@ -54,6 +41,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+
+        // 驗證 phone 欄位，要求它是必填且為有效的格式
+    $request->validate([
+        'name' => 'required|string',
+        'mobile' => 'required|string',
+        'phone' => 'required|string',  // 確保 phone 欄位有值
+    ]);
+        
         // dd($request);
         $input = $request->except('_token');
         // dd($input);
@@ -67,7 +62,7 @@ class StudentController extends Controller
         // 子表
         $item = new Phone;
         $item->student_id = $data->id;
-        $item->phone = $input['phone'];
+        $item->phone = $input['phone']; // 如果沒有傳遞 phone，這裡會觸發錯誤
         $item->save();
 
 
@@ -97,6 +92,14 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+// 驗證 phone 欄位，要求它是必填且為有效的格式
+$request->validate([
+    'name' => 'required|string',
+    'mobile' => 'required|string',
+    'phone' => 'required|string',  // 確保 phone 欄位有值
+]);
+        
         $input = $request->except('_token', '_method');
 
         //主表
@@ -111,7 +114,7 @@ class StudentController extends Controller
         // 新增子表
         $item = new Phone;
         $item->student_id = $data->id;
-        $item->phone = $input['phone'];
+        $item->phone = $input['phone']; // 如果沒有傳遞 phone，這裡會觸發錯誤
         $item->save();
 
 

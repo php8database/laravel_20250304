@@ -42,6 +42,10 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        
+<!-- 返回按鈕 -->
+<a href="{{ route('students.index') }}" class="btn btn-secondary mt-3">Back to Student List</a>
+
     </div>
 
 </body>
