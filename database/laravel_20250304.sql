@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-12 03:16:23
+-- 產生時間： 2025-03-12 07:11:03
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -58,6 +58,27 @@ INSERT INTO `cars` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `hobbies`
+--
+
+CREATE TABLE `hobbies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `hobbies`
+--
+
+INSERT INTO `hobbies` (`id`, `student_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'any', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `migrations`
 --
 
@@ -79,7 +100,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2025_02_26_071533_create_apples_table', 1),
 (6, '2025_03_11_073527_create_teachers_table', 2),
 (8, '2025_03_12_005404_create_cars_table', 3),
-(9, '2025_03_12_013317_create_phones_table', 4);
+(9, '2025_03_12_013317_create_phones_table', 4),
+(10, '2025_03_12_052233_create_hobbies_table', 5),
+(11, '2025_03_12_052025_create_hobbies_table', 6);
 
 -- --------------------------------------------------------
 
@@ -112,8 +135,9 @@ CREATE TABLE `phones` (
 --
 
 INSERT INTO `phones` (`id`, `student_id`, `phone`, `created_at`, `updated_at`) VALUES
-(1, 1, '0922', NULL, NULL),
-(2, 2, '0922', NULL, NULL);
+(2, 2, '0922', NULL, NULL),
+(4, 1, '0922', '2025-03-11 19:51:30', '2025-03-11 19:51:30'),
+(5, 3, '2981', '2025-03-11 21:17:14', '2025-03-11 21:17:14');
 
 -- --------------------------------------------------------
 
@@ -135,8 +159,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5hKs3Wx0VnqiLh8T8ksFV7zgLwT8XUHiOXvrINDW', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTE3YzlpbmRqUUx5N01ndzB6TDRkRHh1Q3RGSDU0OE9ncDNKQU1oQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVhY2hlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741679886),
-('NvEMTIeHoVW6bqBY2oBTmI87LgxI110YihujwxGo', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiREdKS0hQUzdaU2NXbFNhTVV2RGlhUXdtOWVYS2FwZTA5NHhlQ21FUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3QvY2FycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741745302);
+('NvEMTIeHoVW6bqBY2oBTmI87LgxI110YihujwxGo', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiREdKS0hQUzdaU2NXbFNhTVV2RGlhUXdtOWVYS2FwZTA5NHhlQ21FUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTY6Imh0dHA6Ly9sb2NhbGhvc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741758890);
 
 -- --------------------------------------------------------
 
@@ -223,6 +246,12 @@ ALTER TABLE `cars`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `hobbies`
+--
+ALTER TABLE `hobbies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `migrations`
 --
 ALTER TABLE `migrations`
@@ -284,22 +313,28 @@ ALTER TABLE `cars`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `hobbies`
+--
+ALTER TABLE `hobbies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `phones`
 --
 ALTER TABLE `phones`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `teachers`
