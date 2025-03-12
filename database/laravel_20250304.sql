@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-11 09:00:54
+-- 產生時間： 2025-03-12 02:42:28
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -43,10 +43,17 @@ CREATE TABLE `cars` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `mobile` varchar(255) NOT NULL,
-  `love` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `cars`
+--
+
+INSERT INTO `cars` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALUES
+(1, 'Kai', '0921', '2025-03-11 17:39:45', '2025-03-11 17:39:45'),
+(2, 'kitty', '0922', '2025-03-11 17:40:46', '2025-03-11 17:40:46');
 
 -- --------------------------------------------------------
 
@@ -70,7 +77,20 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2025_02_26_053359_create_students_table', 1),
 (4, '2025_02_26_061800_create_sessions_table', 1),
 (5, '2025_02_26_071533_create_apples_table', 1),
-(6, '2025_03_11_073527_create_teachers_table', 2);
+(6, '2025_03_11_073527_create_teachers_table', 2),
+(8, '2025_03_12_005404_create_cars_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -92,7 +112,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5hKs3Wx0VnqiLh8T8ksFV7zgLwT8XUHiOXvrINDW', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTE3YzlpbmRqUUx5N01ndzB6TDRkRHh1Q3RGSDU0OE9ncDNKQU1oQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVhY2hlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741679886);
+('5hKs3Wx0VnqiLh8T8ksFV7zgLwT8XUHiOXvrINDW', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTE3YzlpbmRqUUx5N01ndzB6TDRkRHh1Q3RGSDU0OE9ncDNKQU1oQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVhY2hlcnMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741679886),
+('NvEMTIeHoVW6bqBY2oBTmI87LgxI110YihujwxGo', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiREdKS0hQUzdaU2NXbFNhTVV2RGlhUXdtOWVYS2FwZTA5NHhlQ21FUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3QvY2FycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741743646);
 
 -- --------------------------------------------------------
 
@@ -145,6 +166,23 @@ INSERT INTO `teachers` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALU
 (1, 'kai', '0922', '2025-03-10 23:57:51', '2025-03-10 23:57:51'),
 (2, 'kitty', '0921', '2025-03-10 23:58:06', '2025-03-10 23:58:06');
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- 已傾印資料表的索引
 --
@@ -168,6 +206,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
 -- 資料表索引 `sessions`
 --
 ALTER TABLE `sessions`
@@ -188,6 +232,13 @@ ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
@@ -201,13 +252,13 @@ ALTER TABLE `apples`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `students`
@@ -220,6 +271,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `teachers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
